@@ -1,5 +1,9 @@
+import { Input } from '@/components/ui/input';
+
 export default function Home() {
   return (
-   <div>hello</div>
+    <div>
+      <Input></Input>
+    </div>
   );
 }
