@@ -1,0 +1,3 @@
+export enum CONSTANT_SIZES {
+  MAX_INPUT_HEIGHT_PROMPT = 200,
+}
