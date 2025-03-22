@@ -69,6 +69,7 @@ export const InputMessage = () => {
             caretColor="#FFFFFF"
             outlineOffset="2px"
             color="#FFFFFF"
+            rounded="1rem"
             resize="none"
             rows={1}
             onChange={handleInputChange}
