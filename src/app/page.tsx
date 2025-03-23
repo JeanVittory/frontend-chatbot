@@ -1,37 +1,68 @@
-import { InputMessage } from '@/components/ui/inputMessage';
-import { Box, Flex } from '@chakra-ui/react';
-import { UserLabel } from '@/components/ui/userLabel';
-import { ChatUserOptions } from '@/components/ui/chatUserOptions';
-import { Message } from '@/components/ui/message';
+'use client';
+
+import { Flex, Box, Text, Button } from '@chakra-ui/react';
+import { signIn } from 'next-auth/react';
 
 export default function Home() {
   return (
-    <Box>
-      <Flex
-        p=".8rem"
-        alignItems="center"
-        justifyContent="space-between"
-        bgColor="#0D1322"
-        borderBottom="1px solid rgba(255, 255, 255, 0.1)"
-      >
-        <UserLabel />
-        <ChatUserOptions />
-      </Flex>
-      <Flex flexDirection="column" m="auto" maxWidth="800px" px="1rem">
-        <Message isHuman={true} />
-        <Message isHuman={false} />
-      </Flex>
-      <Box
-        position="fixed"
-        bottom="0"
-        left="0"
-        width="100%"
-        padding="1rem"
-        bgColor="#0D1322"
-        borderTop="1px solid rgba(255, 255, 255, 0.1)"
-      >
-        <InputMessage />
+    <Flex
+      width="100%"
+      height="100vh"
+      justifyContent="center"
+      flexDirection="column"
+      alignItems="center"
+      color="#FFFFFF"
+    >
+      <Box>
+        <Text
+          as="h2"
+          letterSpacing="tighter"
+          style={{
+            fontSize: 'clamp(2.25rem, 5vw, 4.5rem)',
+            fontWeight: 'bold',
+
+            background: 'linear-gradient(to bottom, #FFFFFF 40%, #B2BDCC 80%)',
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            color: 'transparent',
+            margin: 0,
+            padding: 0,
+            width: '800px',
+            textAlign: 'center',
+            lineHeight: '4.3rem',
+          }}
+        >
+          Elevate Your Digital Experience
+        </Text>
       </Box>
-    </Box>
+      <Box>
+        <Text
+          as="p"
+          color="#B2BDCC"
+          fontSize="20px"
+          m="1.5rem 2.125rem"
+          w="900px"
+          textAlign="center"
+        >
+          Discover a new dimension of possibilities with our cutting-edge
+          platform.
+        </Text>
+      </Box>
+      <Button
+        bgColor="#1E293B"
+        _hover={{
+          bgColor: '#64748B',
+        }}
+        color="#ffffff"
+        border="1px solid rgba(255, 255, 255, 0.2)"
+        fontWeight="bold"
+        rounded="md"
+        p="0.5rem 2rem"
+        onClick={() => signIn()}
+      >
+        Sign In
+      </Button>
+    </Flex>
   );
 }
