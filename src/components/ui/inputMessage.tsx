@@ -1,7 +1,7 @@
 'use client';
 
 import { CONSTANT_SIZES } from '@/app/constants';
-import { Box, Flex, Textarea } from '@chakra-ui/react';
+import { Box, Flex, Textarea, Button } from '@chakra-ui/react';
 import { useState, useRef, useEffect, ChangeEvent } from 'react';
 import { BsFillSendFill } from 'react-icons/bs';
 
@@ -52,7 +52,7 @@ export const InputMessage = () => {
       >
         <Box
           backgroundColor="#1F2937"
-          rounded="1rem"
+          rounded="full"
           border="1px solid rgba(255, 255, 255, 0.1)"
           width="100%"
         >
@@ -69,24 +69,28 @@ export const InputMessage = () => {
             caretColor="#FFFFFF"
             outlineOffset="2px"
             color="#FFFFFF"
-            rounded="1rem"
+            rounded="full"
             resize="none"
             rows={1}
             onChange={handleInputChange}
           />
         </Box>
-        <Flex
+
+        <Button
+          type="submit"
           backgroundColor="#494ACA"
           justifyContent="center"
-          alignItems="center"
-          rounded="100%"
-          width="40px"
-          height="40px"
+          rounded="full"
+          width="43px"
+          height="43px"
+          _hover={{
+            base: {},
+            md: { backgroundColor: '#444588' },
+          }}
+          cursor={['default', 'default', 'pointer']}
         >
-          <button type="submit">
-            <BsFillSendFill size="18" />
-          </button>
-        </Flex>
+          <BsFillSendFill />
+        </Button>
       </form>
     </Flex>
   );
