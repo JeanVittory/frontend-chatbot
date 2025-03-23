@@ -2,6 +2,7 @@ import { InputMessage } from '@/components/ui/inputMessage';
 import { Box, Flex } from '@chakra-ui/react';
 import { UserLabel } from '@/components/ui/userLabel';
 import { ChatUserOptions } from '@/components/ui/chatUserOptions';
+import { Message } from '@/components/ui/message';
 
 export default function Home() {
   return (
@@ -15,6 +16,10 @@ export default function Home() {
       >
         <UserLabel />
         <ChatUserOptions />
+      </Flex>
+      <Flex flexDirection="column" m="auto" maxWidth="800px" px="1rem">
+        <Message isHuman={true} />
+        <Message isHuman={false} />
       </Flex>
       <Box
         position="fixed"
