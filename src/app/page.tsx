@@ -1,9 +1,12 @@
 'use client';
 
-import { Flex, Box, Text, Button } from '@chakra-ui/react';
-import { signIn } from 'next-auth/react';
+import { Flex, Box, Text } from '@chakra-ui/react';
+import { LOGIN_PROVIDERS } from './constants';
+import { LoginButton } from '@/components/ui/login-button';
 
 export default function Home() {
+  const providers = Object.values(LOGIN_PROVIDERS);
+
   return (
     <Flex
       width="100%"
@@ -49,20 +52,15 @@ export default function Home() {
           platform.
         </Text>
       </Box>
-      <Button
-        bgColor="#1E293B"
-        _hover={{
-          bgColor: '#64748B',
-        }}
-        color="#ffffff"
-        border="1px solid rgba(255, 255, 255, 0.2)"
-        fontWeight="bold"
-        rounded="md"
-        p="0.5rem 2rem"
-        onClick={() => signIn()}
-      >
-        Sign In
-      </Button>
+      <Flex gap=".8rem">
+        {providers.map((provider) => (
+          <LoginButton
+            key={provider.name}
+            provider={provider.name}
+            icon={provider.icon}
+          />
+        ))}
+      </Flex>
     </Flex>
   );
 }
