@@ -1,3 +1,3 @@
-export { default } from 'next-auth/middleware';
+export async function middleware() {}
 
 export const config = { matcher: ['/chat'] };
