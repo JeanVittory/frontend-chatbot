@@ -2,10 +2,17 @@
 
 import { Flex, Box, Text } from '@chakra-ui/react';
 import { LOGIN_PROVIDERS } from './constants';
-import { LoginButton } from '@/components/ui/login-button';
+import { LoginButton } from '@/components/ui/loginButton';
+import { useSession } from 'next-auth/react';
+import AuthRedirect from '@/components/ui/authRedirect';
 
 export default function Home() {
   const providers = Object.values(LOGIN_PROVIDERS);
+  const { status } = useSession();
+
+  if (status === 'loading') return;
+
+  if (status === 'authenticated') return <AuthRedirect />;
 
   return (
     <Flex
