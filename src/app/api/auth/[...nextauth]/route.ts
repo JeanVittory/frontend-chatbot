@@ -18,6 +18,17 @@ const handler = NextAuth({
       clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
     }),
   ],
+
+  callbacks: {
+    async signIn() {
+      return true;
+    },
+
+    async session({ session, token }) {
+      session.user.id = token.sub as string;
+      return session;
+    },
+  },
 });
 
 export { handler as GET, handler as POST };
