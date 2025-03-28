@@ -1,8 +1,8 @@
 'use client';
 
+import { useState, useRef, useEffect, ChangeEvent } from 'react';
 import { CONSTANT_SIZES } from '@/app/constants';
 import { Box, Flex, Textarea, Button } from '@chakra-ui/react';
-import { useState, useRef, useEffect, ChangeEvent } from 'react';
 import { BsFillSendFill } from 'react-icons/bs';
 
 export const InputMessage = () => {
