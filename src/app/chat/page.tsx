@@ -3,8 +3,13 @@ import { InputMessage } from '@/components/ui/inputMessage';
 import { UserLabel } from '@/components/ui/userLabel';
 import { ChatUserOptions } from '@/components/ui/chatUserOptions';
 import { Message } from '@/components/ui/message';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../api/auth/[...nextauth]/route';
 
-export default function Chat() {
+export default async function Chat() {
+  const session = await getServerSession(authOptions);
+
+  console.log(session);
   return (
     <Box>
       <Flex
