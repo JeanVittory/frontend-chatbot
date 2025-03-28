@@ -18,3 +18,8 @@ export const LOGIN_PROVIDERS = {
 export enum CONSTANT_SIZES {
   MAX_INPUT_HEIGHT_PROMPT = 200,
 }
+
+export enum ENDPOINTS {
+  BASE_URL = 'http://127.0.0.1:8000/',
+  CHAT_HISTORY = 'messages/',
+}
