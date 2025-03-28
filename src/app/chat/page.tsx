@@ -3,16 +3,19 @@ import { InputMessage } from '@/components/ui/inputMessage';
 import { UserLabel } from '@/components/ui/userLabel';
 import { ChatUserOptions } from '@/components/ui/chatUserOptions';
 import { Message } from '@/components/ui/message';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '../api/auth/[...nextauth]/route';
+// import { getServerSession } from 'next-auth';
+// import { authOptions } from '../api/auth/[...nextauth]/route';
+import { getChatHistory } from '../services/chatHistory';
 
 export default async function Chat() {
-  const session = await getServerSession(authOptions);
+  //const session = await getServerSession(authOptions);
+  const chatHistory = await getChatHistory('user_session_new');
 
-  console.log(session);
   return (
     <Box>
       <Flex
+        position="fixed"
+        width="100%"
         p=".8rem"
         alignItems="center"
         justifyContent="space-between"
@@ -22,9 +25,23 @@ export default async function Chat() {
         <UserLabel />
         <ChatUserOptions />
       </Flex>
-      <Flex flexDirection="column" m="auto" maxWidth="800px" px="1rem">
-        <Message isHuman={true} />
-        <Message isHuman={false} />
+      <Flex
+        flexDirection="column"
+        m="auto"
+        maxWidth="800px"
+        px="1rem"
+        pb="6rem"
+      >
+        {chatHistory.message.map((message) => {
+          return (
+            <Message
+              createdAt={message.createdAt}
+              key={message.id}
+              isHuman={message.type === 'human'}
+              message={message.content}
+            />
+          );
+        })}
       </Flex>
       <Box
         position="fixed"
