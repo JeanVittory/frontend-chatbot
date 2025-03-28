@@ -1,7 +1,9 @@
 import { UserMessage } from '@/app/types/userMessage';
 import { Box, Text } from '@chakra-ui/react';
+import dayjs from 'dayjs';
 
-export const Message = ({ isHuman }: UserMessage) => {
+export const Message = ({ isHuman, message, createdAt }: UserMessage) => {
+  const date = dayjs(createdAt).format('DD MMM YYYY, hh:mm A');
   return (
     <Box
       mt="1rem"
@@ -16,9 +18,9 @@ export const Message = ({ isHuman }: UserMessage) => {
       wordWrap="break-word"
       alignSelf={isHuman ? 'end' : 'flex-start'}
     >
-      <Text as="p">Hello, this is a message.</Text>
+      <Text as="p">{message}</Text>
       <Box fontSize="xs" color="#9CA3AF" textAlign="right">
-        10:32am
+        {date}
       </Box>
     </Box>
   );
