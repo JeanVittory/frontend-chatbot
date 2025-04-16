@@ -1,14 +1,16 @@
 'use client';
 
-import { useState, useRef, useEffect, ChangeEvent } from 'react';
+import { useState, useRef, useEffect, ChangeEvent, FormEvent } from 'react';
 import { CONSTANT_SIZES } from '@/app/constants';
 import { Flex, Textarea, Button } from '@chakra-ui/react';
 import { BsFillSendFill } from 'react-icons/bs';
+import { useWebSocketStore } from '../store/websocketStore';
 
 export const InputMessage = () => {
   const [userPrompt, setUserPrompt] = useState<string>('');
   const [showScroll, setShowScroll] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const { sendMessage } = useWebSocketStore();
 
   const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setUserPrompt(e.target.value);
@@ -39,7 +41,11 @@ export const InputMessage = () => {
     }
   }, [userPrompt, showScroll]);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!userPrompt.trim().length) return;
+    sendMessage(userPrompt);
+    setUserPrompt('');
     return;
   };
 
@@ -79,6 +85,7 @@ export const InputMessage = () => {
             resize="none"
             rows={1}
             onChange={handleInputChange}
+            value={userPrompt}
           />
         </Flex>
 
