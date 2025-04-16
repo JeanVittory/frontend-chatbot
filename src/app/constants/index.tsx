@@ -22,5 +22,6 @@ export enum CONSTANT_SIZES {
 export enum ENDPOINTS {
   BASE_URL = 'http://127.0.0.1:8000/',
   CHAT_HISTORY = 'messages/',
+  HEALTH_CHECK = 'health',
   CHAT_SOCKET = 'ws://localhost:8000/ws',
 }
