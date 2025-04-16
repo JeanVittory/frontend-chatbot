@@ -1,9 +1,16 @@
 import { Box } from '@chakra-ui/react';
-import { InputMessage } from '@/app/components/InputMessage';
-// import { WebsocketProvider } from '../providers/WebsocketProvider';
+import { InputMessage } from '../components/InputMessage';
 import { Messages } from '../components/Messages';
+import { ErrorMessage } from '../components/ErrorMessage';
+import { checkBackendHealth } from '../utils/checkBackendHealth';
 
 export default async function Chat() {
+  const isHealthy = await checkBackendHealth();
+
+  if (!isHealthy)
+    return (
+      <ErrorMessage message="Something went wrong with the server. Please try again later." />
+    );
   return (
     <Box>
       <Messages />
