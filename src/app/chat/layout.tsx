@@ -1,4 +1,3 @@
-import { Header } from '../components/Header';
 import { WebsocketProvider } from '../providers/WebsocketProvider';
 
 export default function ChatLayout({
@@ -6,10 +5,5 @@ export default function ChatLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <WebsocketProvider>
-      <Header />
-      {children}
-    </WebsocketProvider>
-  );
+  return <WebsocketProvider>{children}</WebsocketProvider>;
 }
