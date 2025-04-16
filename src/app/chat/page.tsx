@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/react';
 import { InputMessage } from '../components/InputMessage';
 import { Messages } from '../components/Messages';
 import { ErrorMessage } from '../components/ErrorMessage';
-import { checkBackendHealth } from '../utils/checkBackendHealth';
+import { checkBackendHealth } from '../services/checkBackendHealth';
 
 export default async function Chat() {
   const isHealthy = await checkBackendHealth();
