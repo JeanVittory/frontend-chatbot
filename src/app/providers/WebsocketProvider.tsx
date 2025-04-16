@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react';
 import { ENDPOINTS } from '../constants';
 import { useWebSocketStore } from '../store/websocketStore';
 import { useEffect, useState } from 'react';
+import { Header } from '../components/Header';
 
 export const WebsocketProvider = ({
   children,
@@ -21,5 +22,10 @@ export const WebsocketProvider = ({
     if (userId) connect(ENDPOINTS.CHAT_SOCKET, userId);
   }, [userId, connect]);
 
-  return <>{children}</>;
+  return (
+    <>
+      <Header />
+      {children}
+    </>
+  );
 };
