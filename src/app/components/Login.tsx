@@ -2,7 +2,7 @@
 
 import { Flex, Box, Text } from '@chakra-ui/react';
 import { LOGIN_PROVIDERS } from '@/app/constants';
-import { LoginButton } from '@/components/ui/loginButton';
+import { LoginButton } from '@/app/components/LoginButton';
 import { useSession } from 'next-auth/react';
 import { Spinner } from '@/components/ui/spinner';
 
